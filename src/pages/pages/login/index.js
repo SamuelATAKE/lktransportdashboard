@@ -159,7 +159,7 @@ const LoginPage = () => {
           </Box>
           <Box sx={{ mb: 6 }}>
             <Typography variant='h5' sx={{ fontWeight: 600, marginBottom: 1.5 }}>
-              Welcome to {themeConfig.templateName}! 👋🏻
+              Bienvenu sur le tableau de bord de {themeConfig.templateName}! 👋🏻
             </Typography>
             <Typography variant='body2'>Please sign-in to your account and start the adventure</Typography>
           </Box>
@@ -168,7 +168,7 @@ const LoginPage = () => {
             <FormControl fullWidth>
               <InputLabel htmlFor='auth-login-password'>Password</InputLabel>
               <OutlinedInput
-                label='Password'
+                label='Mot de passe'
                 value={values.password}
                 id='auth-login-password'
                 onChange={handleChange('password')}
@@ -190,9 +190,9 @@ const LoginPage = () => {
             <Box
               sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
             >
-              <FormControlLabel control={<Checkbox />} label='Remember Me' />
+              <FormControlLabel control={<Checkbox />} label='Se rappeler de son mot de passe' />
               <Link passHref href='/'>
-                <LinkStyled onClick={e => e.preventDefault()}>Forgot Password?</LinkStyled>
+                <LinkStyled onClick={e => e.preventDefault()}>Mot de passe oublié?</LinkStyled>
               </Link>
             </Box>
             <Button
@@ -202,15 +202,15 @@ const LoginPage = () => {
               sx={{ marginBottom: 7 }}
               onClick={() => router.push('/')}
             >
-              Login
+              Connexion
             </Button>
             <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
               <Typography variant='body2' sx={{ marginRight: 2 }}>
-                New on our platform?
+                Nouveau sur la plateforme?
               </Typography>
               <Typography variant='body2'>
                 <Link passHref href='/pages/register'>
-                  <LinkStyled>Create an account</LinkStyled>
+                  <LinkStyled>Demander qu'on vous créer un compte</LinkStyled>
                 </Link>
               </Typography>
             </Box>

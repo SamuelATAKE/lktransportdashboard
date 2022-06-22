@@ -28,7 +28,7 @@ const navigation = () => {
     {
       title: 'Administateurs',
       icon: Login,
-      path: '/pages/login',
+      path: '/administrateurs',
       openInNewTab: true
     },
     {
