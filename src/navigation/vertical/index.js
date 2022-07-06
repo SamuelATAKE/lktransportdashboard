@@ -9,6 +9,7 @@ import CreditCardOutline from 'mdi-material-ui/CreditCardOutline'
 import AccountPlusOutline from 'mdi-material-ui/AccountPlusOutline'
 import AlertCircleOutline from 'mdi-material-ui/AlertCircleOutline'
 import GoogleCirclesExtended from 'mdi-material-ui/GoogleCirclesExtended'
+import LinkBoxVariantOutline from 'mdi-material-ui/LinkBoxVariantOutline'
 
 const navigation = () => {
   return [
@@ -28,20 +29,17 @@ const navigation = () => {
     {
       title: 'Administateurs',
       icon: Login,
-      path: '/administrateurs',
-      openInNewTab: true
+      path: '/administrateurs'
     },
     {
       title: 'Stations',
       icon: AccountPlusOutline,
-      path: '/pages/register',
-      openInNewTab: true
+      path: '/stations'
     },
     {
       title: 'Tarifs',
       icon: AlertCircleOutline,
-      path: '/pages/error',
-      openInNewTab: true
+      path: '/tarifs'
     },
     {
       sectionTitle: 'Voyages'
@@ -49,11 +47,16 @@ const navigation = () => {
     {
       title: 'Réservations',
       icon: FormatLetterCase,
-      path: '/typography'
+      path: '/reservations'
+    },
+    {
+      title: 'Commissions',
+      icon: LinkBoxVariantOutline,
+      path: '/commissions'
     },
     {
       title: 'Payements',
-      path: '/icons',
+      path: '/payements',
       icon: CreditCardOutline
     }
   ]

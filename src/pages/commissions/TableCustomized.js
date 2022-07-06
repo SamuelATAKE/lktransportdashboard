@@ -45,40 +45,41 @@ const rows = [
 ]
 
 const TableCustomized = () => {
-  const [admins, setAdmins] = useState([]);
-  
+  const [reservations, setReservations] = useState([])
   useEffect(() => {
-    axios.get(`https://lktransportbackend.herokuapp.com/administrateur`).then(res => {
+    axios.get(`https://lktransportbackend.herokuapp.com/reservation`).then(res => {
       console.log(res.data)
-      setAdmins(res.data)
+      setReservations(res.data)
     })
   }, []);
   
   return (
     <TableContainer component={Paper}>
 
-      <Table sx={{ minWidth: 700 }} aria-label='Administrateurs'>
+      <Table sx={{ minWidth: 700 }} aria-label='Réservations'>
         <TableHead>
           <TableRow>
             <StyledTableCell>Numéro</StyledTableCell>
+            <StyledTableCell align='right'>Date de voyage</StyledTableCell>
             <StyledTableCell align='right'>Nom</StyledTableCell>
-            <StyledTableCell align='right'>Prénom(s)</StyledTableCell>
-            <StyledTableCell align='right'>Email</StyledTableCell>
-            <StyledTableCell align='right'>Numéro de téléphone</StyledTableCell>
+            <StyledTableCell align='right'>Téléphone</StyledTableCell>
+            <StyledTableCell align='right'>Nombre</StyledTableCell>
             <StyledTableCell align='right'>Station</StyledTableCell>
+            <StyledTableCell align='right'>Prix</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {admins.map(admin => (
-            <StyledTableRow key={admin.id}>
+          {reservations.map(reservation => (
+            <StyledTableRow key={reservation.id}>
               <StyledTableCell component='th' scope='row'>
-                {admin.id}
+                {reservation.id}
               </StyledTableCell>
-              <StyledTableCell align='right'>{admin.nom}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.prenom}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.email}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.telephone}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.station.ville}</StyledTableCell>
+              <StyledTableCell align='right'>{reservation.dateVoyage}</StyledTableCell>
+              <StyledTableCell align='right'>{reservation.nom}</StyledTableCell>
+              <StyledTableCell align='right'>{reservation.telephone}</StyledTableCell>
+              <StyledTableCell align='right'>{reservation.nombre}</StyledTableCell>
+              <StyledTableCell align='right'>{reservation.station.ville}</StyledTableCell>
+              <StyledTableCell align='right'>{reservation.tarif? reservation.tarif.prix : 0}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

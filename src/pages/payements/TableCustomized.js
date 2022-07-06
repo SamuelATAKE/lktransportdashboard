@@ -45,12 +45,11 @@ const rows = [
 ]
 
 const TableCustomized = () => {
-  const [admins, setAdmins] = useState([]);
-  
+  const [payements, setPayements] = useState([])
   useEffect(() => {
-    axios.get(`https://lktransportbackend.herokuapp.com/administrateur`).then(res => {
+    axios.get(`https://lktransportbackend.herokuapp.com/payement`).then(res => {
       console.log(res.data)
-      setAdmins(res.data)
+      setPayements(res.data)
     })
   }, []);
   
@@ -61,24 +60,26 @@ const TableCustomized = () => {
         <TableHead>
           <TableRow>
             <StyledTableCell>Numéro</StyledTableCell>
+            <StyledTableCell align='right'>Reférence</StyledTableCell>
             <StyledTableCell align='right'>Nom</StyledTableCell>
-            <StyledTableCell align='right'>Prénom(s)</StyledTableCell>
-            <StyledTableCell align='right'>Email</StyledTableCell>
             <StyledTableCell align='right'>Numéro de téléphone</StyledTableCell>
-            <StyledTableCell align='right'>Station</StyledTableCell>
+            <StyledTableCell align='right'>Date de payement</StyledTableCell>
+            <StyledTableCell align='right'>Date de voyage</StyledTableCell>
+            <StyledTableCell align='right'>Statut payement</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {admins.map(admin => (
-            <StyledTableRow key={admin.id}>
+          {payements.map(payement => (
+            <StyledTableRow key={payement.id}>
               <StyledTableCell component='th' scope='row'>
-                {admin.id}
+                {payement.id}
               </StyledTableCell>
-              <StyledTableCell align='right'>{admin.nom}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.prenom}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.email}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.telephone}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.station.ville}</StyledTableCell>
+              <StyledTableCell align='right'>{payement.reference}</StyledTableCell>
+              <StyledTableCell align='right'>{payement.reservation.nom}</StyledTableCell>
+              <StyledTableCell align='right'>{payement.reservation.telephone}</StyledTableCell>
+              <StyledTableCell align='right'>{payement.datepayement}</StyledTableCell>
+              <StyledTableCell align='right'>{payement.reservation.dateVoyage}</StyledTableCell>
+              <StyledTableCell align='right'>{payement.status}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

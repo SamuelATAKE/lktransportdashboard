@@ -45,40 +45,37 @@ const rows = [
 ]
 
 const TableCustomized = () => {
-  const [admins, setAdmins] = useState([]);
-  
+  const [tarifs, setTarifs] = useState([])
   useEffect(() => {
-    axios.get(`https://lktransportbackend.herokuapp.com/administrateur`).then(res => {
+    axios.get(`https://lktransportbackend.herokuapp.com/tarif`).then(res => {
       console.log(res.data)
-      setAdmins(res.data)
+      setTarifs(res.data)
     })
   }, []);
   
   return (
     <TableContainer component={Paper}>
 
-      <Table sx={{ minWidth: 700 }} aria-label='Administrateurs'>
+      <Table sx={{ minWidth: 700 }} aria-label='Tarifs'>
         <TableHead>
           <TableRow>
             <StyledTableCell>Numéro</StyledTableCell>
-            <StyledTableCell align='right'>Nom</StyledTableCell>
-            <StyledTableCell align='right'>Prénom(s)</StyledTableCell>
-            <StyledTableCell align='right'>Email</StyledTableCell>
-            <StyledTableCell align='right'>Numéro de téléphone</StyledTableCell>
-            <StyledTableCell align='right'>Station</StyledTableCell>
+            <StyledTableCell align='right'>Départ</StyledTableCell>
+            <StyledTableCell align='right'>Destination</StyledTableCell>
+            <StyledTableCell align='right'>Prix</StyledTableCell>
+            <StyledTableCell align='right'></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {admins.map(admin => (
-            <StyledTableRow key={admin.id}>
+          {tarifs.map(tarif => (
+            <StyledTableRow key={tarif.id}>
               <StyledTableCell component='th' scope='row'>
-                {admin.id}
+                {tarif.id}
               </StyledTableCell>
-              <StyledTableCell align='right'>{admin.nom}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.prenom}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.email}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.telephone}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.station.ville}</StyledTableCell>
+              <StyledTableCell align='right'>{tarif.depart}</StyledTableCell>
+              <StyledTableCell align='right'>{tarif.destination}</StyledTableCell>
+              <StyledTableCell align='right'>{tarif.prix}</StyledTableCell>
+              <StyledTableCell align='right'></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // ** Next Imports
 import Link from 'next/link'
@@ -38,6 +38,7 @@ import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Demo Imports
 import FooterIllustrationsV1 from 'src/views/pages/auth/FooterIllustration'
+import axios from 'axios'
 
 // ** Styled Components
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -47,26 +48,38 @@ const Card = styled(MuiCard)(({ theme }) => ({
 const LinkStyled = styled('a')(({ theme }) => ({
   fontSize: '0.875rem',
   textDecoration: 'none',
-  color: theme.palette.primary.main
+  color: '#208b4c'
 }))
+
+const initialState = {
+  email: "",
+  password: ""
+}
 
 const FormControlLabel = styled(MuiFormControlLabel)(({ theme }) => ({
   '& .MuiFormControlLabel-label': {
     fontSize: '0.875rem',
-    color: theme.palette.text.secondary
+    color: '#208b4c'
   }
 }))
+
+import imgSrc from "./logo.png";
 
 const LoginPage = () => {
   // ** State
   const [values, setValues] = useState({
+    email: '',
     password: '',
     showPassword: false
   })
 
+  const [admin, setAdmin] = useState(initialState);
+  const [admins, setAdmins] = useState([]);
+  
+
   // ** Hook
   const theme = useTheme()
-  const router = useRouter()
+  const router = useRouter();
 
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value })
@@ -80,12 +93,45 @@ const LoginPage = () => {
     event.preventDefault()
   }
 
+  useEffect(() => {
+    axios.get(`https://lktransportbackend.herokuapp.com/administrateur`).then(res => {
+      setAdmins(res.data);
+      console.log(res.data);
+      console.log(admins);
+    });
+  }, []);
+
+  const onSubmit = () => {
+    // e.preventDefault();
+    admin.email = values.email;
+    admin.password = values.password;
+
+    console.log(admin);
+
+    // axios.get(`https://lktransportbackend.herokuapp.com/administrateur/login`, JSON.stringify(admin)).then((res) => {
+    //   console.log(res.data);
+    // });
+
+    admins.forEach(a => {
+      if (a.email === admin.email && a.password === admin.password) {
+        console.log("logged");
+        sessionStorage.setItem("loggedUser", JSON.stringify(a));
+        router.push("/");
+
+      } else {
+        console.log("Wrong details");
+      }
+    });
+
+
+  }
+
   return (
     <Box className='content-center'>
       <Card sx={{ zIndex: 1 }}>
         <CardContent sx={{ padding: theme => `${theme.spacing(12, 9, 7)} !important` }}>
           <Box sx={{ mb: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <svg
+            {/* <svg
               width={35}
               height={29}
               version='1.1'
@@ -143,7 +189,8 @@ const LoginPage = () => {
                   </g>
                 </g>
               </g>
-            </svg>
+            </svg> */}
+            <img src={imgSrc} alt="Le logo" />
             <Typography
               variant='h6'
               sx={{
@@ -161,12 +208,12 @@ const LoginPage = () => {
             <Typography variant='h5' sx={{ fontWeight: 600, marginBottom: 1.5 }}>
               Bienvenu sur le tableau de bord de {themeConfig.templateName}! 👋🏻
             </Typography>
-            <Typography variant='body2'>Please sign-in to your account and start the adventure</Typography>
+            <Typography variant='body2'>Connectez-vous</Typography>
           </Box>
-          <form noValidate autoComplete='off' onSubmit={e => e.preventDefault()}>
-            <TextField autoFocus fullWidth id='email' label='Email' sx={{ marginBottom: 4 }} />
+          <form noValidate autoComplete='off' onSubmit={() => onSubmit()}>
+            <TextField autoFocus fullWidth id='email' label='Adresse mail' name="email" value={values.email} onChange={handleChange('email')} sx={{ marginBottom: 4 }} />
             <FormControl fullWidth>
-              <InputLabel htmlFor='auth-login-password'>Password</InputLabel>
+              <InputLabel htmlFor='auth-login-password'>Mot de passe</InputLabel>
               <OutlinedInput
                 label='Mot de passe'
                 value={values.password}
@@ -200,7 +247,7 @@ const LoginPage = () => {
               size='large'
               variant='contained'
               sx={{ marginBottom: 7 }}
-              onClick={() => router.push('/')}
+              onClick={() => onSubmit()}
             >
               Connexion
             </Button>

@@ -26,13 +26,16 @@ import { MenuItem, Select } from '@mui/material'
 import axios from 'axios'
 
 const FormLayoutsBasic = () => {
-  // ** States
+  // ** State
   const [values, setValues] = useState({
+    nom: '',
+    prenom: '',
+    email: '',
     password: '',
-    showPassword: false
+    showPassword: false,
+    station: ''
   })
 
-  const [stations, setStations] = useState([]);
 
   const [confirmPassValues, setConfirmPassValues] = useState({
     password: '',
@@ -59,12 +62,18 @@ const FormLayoutsBasic = () => {
     event.preventDefault()
   }
 
+  const [stations, setStations] = useState([]);
+
   useEffect(() => {
     axios.get(`https://lktransportbackend.herokuapp.com/station`).then(res => {
       console.log(res.data);
       setStations(res.data);
-    })
+    });
   }, []);
+
+  console.log("Les stations");
+  
+  console.log(stations);
 
   return (
     <Card>
@@ -73,16 +82,18 @@ const FormLayoutsBasic = () => {
         <form onSubmit={e => e.preventDefault()}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
-              <TextField fullWidth label='Nom' placeholder='Entrez le nom de l admin' />
+              <TextField fullWidth label='Nom' value={values.nom} onChange={handleChange('nom')} placeholder='Entrez le nom de l admin' />
             </Grid>
             <Grid item xs={12}>
-              <TextField fullWidth label='Prénom' placeholder='Entrez le prénom de l admin' />
+              <TextField fullWidth label='Prénom' value={values.prenom} onChange={handleChange('prenom')} placeholder='Entrez le prénom de l admin' />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 fullWidth
                 type='email'
                 label='Adresse mail'
+                value={values.email}
+                onChange={handleChange('email')}
                 placeholder='Entrez dans une adresse mail'
                 helperText='Vous pouvez utiliser des lettres, des nombres et des points'
               />
@@ -120,6 +131,8 @@ const FormLayoutsBasic = () => {
                 <InputLabel id='form-layouts-separator-select-label'>Stations</InputLabel>
                 <Select
                   label='Station'
+                  value={values.station}
+                  onChange={handleChange('station')}
                   defaultValue=''
                   id='form-layouts-separator-select'
                   labelId='form-layouts-separator-select-label'

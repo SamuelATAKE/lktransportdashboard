@@ -26,6 +26,8 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 
 // ** Global css styles
 import '../../styles/globals.css'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -60,7 +62,7 @@ const App = props => {
         <meta name='keywords' content='Tableau de bord, LK Transport, Transport' />
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
-
+      <ToastContainer autoClose={10000} />
       <SettingsProvider>
         <SettingsConsumer>
           {({ settings }) => {

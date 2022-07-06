@@ -31,13 +31,13 @@ const Trophy = () => {
       <CardContent>
         <Typography variant='h6'>Bienvenue John! 🥳</Typography>
         <Typography variant='body2' sx={{ letterSpacing: '0.25px' }}>
-          Best seller of the month
+          Visiter réservations de cette journée
         </Typography>
         <Typography variant='h5' sx={{ my: 4, color: 'primary.main' }}>
           $42.8k
         </Typography>
         <Button size='small' variant='contained'>
-          View Sales
+          Voir les réservations
         </Button>
         <TriangleImg alt='triangle background' src={`/images/misc/${imageSrc}`} />
       </CardContent>

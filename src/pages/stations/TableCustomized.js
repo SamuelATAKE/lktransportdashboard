@@ -45,40 +45,39 @@ const rows = [
 ]
 
 const TableCustomized = () => {
-  const [admins, setAdmins] = useState([]);
-  
+  const [stations, setStations] = useState([])
   useEffect(() => {
-    axios.get(`https://lktransportbackend.herokuapp.com/administrateur`).then(res => {
+    axios.get(`https://lktransportbackend.herokuapp.com/station`).then(res => {
       console.log(res.data)
-      setAdmins(res.data)
+      setStations(res.data)
     })
   }, []);
   
   return (
     <TableContainer component={Paper}>
 
-      <Table sx={{ minWidth: 700 }} aria-label='Administrateurs'>
+      <Table sx={{ minWidth: 700 }} aria-label='Stations'>
         <TableHead>
           <TableRow>
             <StyledTableCell>Numéro</StyledTableCell>
             <StyledTableCell align='right'>Nom</StyledTableCell>
-            <StyledTableCell align='right'>Prénom(s)</StyledTableCell>
-            <StyledTableCell align='right'>Email</StyledTableCell>
-            <StyledTableCell align='right'>Numéro de téléphone</StyledTableCell>
-            <StyledTableCell align='right'>Station</StyledTableCell>
+            <StyledTableCell align='right'>Ville</StyledTableCell>
+            <StyledTableCell align='right'>Localisation</StyledTableCell>
+            <StyledTableCell align='right'>Contact</StyledTableCell>
+            <StyledTableCell align='right'></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {admins.map(admin => (
-            <StyledTableRow key={admin.id}>
+          {stations.map(station => (
+            <StyledTableRow key={station.id}>
               <StyledTableCell component='th' scope='row'>
-                {admin.id}
+                {station.id}
               </StyledTableCell>
-              <StyledTableCell align='right'>{admin.nom}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.prenom}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.email}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.telephone}</StyledTableCell>
-              <StyledTableCell align='right'>{admin.station.ville}</StyledTableCell>
+              <StyledTableCell align='right'>{station.nom}</StyledTableCell>
+              <StyledTableCell align='right'>{station.ville}</StyledTableCell>
+              <StyledTableCell align='right'>{station.localisation}</StyledTableCell>
+              <StyledTableCell align='right'>{station.contact}</StyledTableCell>
+              <StyledTableCell align='right'></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
