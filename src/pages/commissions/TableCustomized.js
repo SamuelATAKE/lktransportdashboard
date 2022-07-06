@@ -45,14 +45,14 @@ const rows = [
 ]
 
 const TableCustomized = () => {
-  const [reservations, setReservations] = useState([])
+  const [commissions, setCommissions] = useState([])
   useEffect(() => {
-    axios.get(`https://lktransportbackend.herokuapp.com/reservation`).then(res => {
+    axios.get(`https://lktransportbackend.herokuapp.com/commission`).then(res => {
       console.log(res.data)
-      setReservations(res.data)
+      setCommissions(res.data)
     })
   }, []);
-  
+
   return (
     <TableContainer component={Paper}>
 
@@ -60,26 +60,30 @@ const TableCustomized = () => {
         <TableHead>
           <TableRow>
             <StyledTableCell>Numéro</StyledTableCell>
-            <StyledTableCell align='right'>Date de voyage</StyledTableCell>
-            <StyledTableCell align='right'>Nom</StyledTableCell>
-            <StyledTableCell align='right'>Téléphone</StyledTableCell>
-            <StyledTableCell align='right'>Nombre</StyledTableCell>
-            <StyledTableCell align='right'>Station</StyledTableCell>
+            <StyledTableCell align='right'>Date d'expédition</StyledTableCell>
+            <StyledTableCell align='right'>Nom Expéditeur</StyledTableCell>
+            <StyledTableCell align='right'>Contact Expéditeur</StyledTableCell>
+            <StyledTableCell align='right'>Ville départ</StyledTableCell>
+            <StyledTableCell align='right'>Nom destinataire</StyledTableCell>
+            <StyledTableCell align='right'>Contact destinataire</StyledTableCell>
+            <StyledTableCell align='right'>Ville arrivée</StyledTableCell>
             <StyledTableCell align='right'>Prix</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {reservations.map(reservation => (
-            <StyledTableRow key={reservation.id}>
+          {commissions.map(commission => (
+            <StyledTableRow key={commission.id}>
               <StyledTableCell component='th' scope='row'>
-                {reservation.id}
+                {commission.id}
               </StyledTableCell>
-              <StyledTableCell align='right'>{reservation.dateVoyage}</StyledTableCell>
-              <StyledTableCell align='right'>{reservation.nom}</StyledTableCell>
-              <StyledTableCell align='right'>{reservation.telephone}</StyledTableCell>
-              <StyledTableCell align='right'>{reservation.nombre}</StyledTableCell>
-              <StyledTableCell align='right'>{reservation.station.ville}</StyledTableCell>
-              <StyledTableCell align='right'>{reservation.tarif? reservation.tarif.prix : 0}</StyledTableCell>
+              <StyledTableCell align='right'>{commission.dateExpedition}</StyledTableCell>
+              <StyledTableCell align='right'>{commission.nomExpediteur}</StyledTableCell>
+              <StyledTableCell align='right'>{commission.contactExpediteur}</StyledTableCell>
+              <StyledTableCell align='right'>{commission.depart}</StyledTableCell>
+              <StyledTableCell align='right'>{commission.nomDestinataire}</StyledTableCell>
+              <StyledTableCell align='right'>{commission.contactDestinataire}</StyledTableCell>
+              <StyledTableCell align='right'>{commission.destination}</StyledTableCell>
+              <StyledTableCell align='right'>{commission.prix ? commission.prix : 0}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
