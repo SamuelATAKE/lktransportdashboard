@@ -33,9 +33,9 @@ const Trophy = () => {
         <Typography variant='body2' sx={{ letterSpacing: '0.25px' }}>
           Visiter réservations de cette journée
         </Typography>
-        <Typography variant='h5' sx={{ my: 4, color: 'primary.main' }}>
+        {/* <Typography variant='h5' sx={{ my: 4, color: 'primary.main' }}>
           $42.8k
-        </Typography>
+        </Typography> */}
         <Button size='small' variant='contained'>
           Voir les réservations
         </Button>
