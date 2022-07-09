@@ -67,7 +67,7 @@ const TabInfo = () => {
             </FormControl>
           </Grid>
           <Grid item xs={12}>
-            <Button variant='contained' sx={{ marginRight: 3.5 }}>
+            <Button color='success' variant='contained' sx={{ marginRight: 3.5 }}>
               Sauvegarder
             </Button>
             <Button type='reset' variant='outlined' color='secondary' onClick={() => setDate(null)}>

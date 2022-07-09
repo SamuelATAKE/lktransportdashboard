@@ -1,5 +1,6 @@
 import { Box, Button } from '@mui/material'
 import { Card, Grid, Link, Typography } from '@mui/material'
+import router from 'next/router'
 import React from 'react'
 import TableCustomized from './TableCustomized'
 
@@ -24,7 +25,7 @@ const Reservations = () => {
                             justifyContent: 'space-between'
                         }}
                     >
-                        <Button onClick={() => router.push('/reservations/add')} size='small' variant='contained'>
+                        <Button color="success" onClick={() => router.push('/reservations/add')} size='small' variant='contained'>
                             Ajouter réservation
                         </Button>
                     </Box>

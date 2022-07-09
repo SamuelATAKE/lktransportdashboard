@@ -17,7 +17,7 @@ const Tarifs = () => {
             </Grid>
             <Grid item xs={12}>
                 <Card>
-                    <Button onClick={() => router.push('/tarifs/add')} size='small' variant='contained'>
+                    <Button color="success" onClick={() => router.push('/tarifs/add')} size='small' variant='contained'>
                         Ajouter un tarif
                     </Button>
                     <TableCustomized />

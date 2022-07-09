@@ -24,7 +24,7 @@ const Commissions = () => {
                             justifyContent: 'space-between'
                         }}
                     >
-                        <Button onClick={() => router.push('/commissions/add')} size='small' variant='contained'>
+                        <Button color="success" onClick={() => router.push('/commissions/add')} size='small' variant='contained'>
                             Ajouter commission
                         </Button>
                     </Box>

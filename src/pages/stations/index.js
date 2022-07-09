@@ -1,6 +1,7 @@
 import { Button, Card, Link, Typography } from '@mui/material'
 import { Box } from '@mui/material'
 import { Grid } from '@mui/material'
+import router from 'next/router'
 import React from 'react'
 import TableCustomized from './TableCustomized'
 
@@ -25,7 +26,7 @@ const Stations = () => {
                             justifyContent: 'space-between'
                         }}
                     >
-                        <Button onClick={() => router.push('/stations/add')} size='small' variant='contained'>
+                        <Button color="success" onClick={() => router.push('/stations/add')} size='small' variant='contained'>
                             Ajouter une station
                         </Button>
                     </Box>

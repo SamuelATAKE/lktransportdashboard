@@ -55,6 +55,7 @@ const UserLayout = ({ children }) => {
         <VerticalAppBarContent
           hidden={hidden}
           settings={settings}
+          color="success"
           saveSettings={saveSettings}
           toggleNavVisibility={props.toggleNavVisibility}
         />

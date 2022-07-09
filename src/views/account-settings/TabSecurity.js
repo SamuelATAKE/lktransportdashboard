@@ -185,7 +185,7 @@ const TabSecurity = () => {
           >
             <Avatar
               variant='rounded'
-              sx={{ width: 48, height: 48, color: 'common.white', backgroundColor: 'primary.main' }}
+              sx={{ width: 48, height: 48, color: 'common.white', backgroundColor: 'success.main' }}
             >
               <LockOpenOutline sx={{ fontSize: '1.75rem' }} />
             </Avatar>
@@ -193,14 +193,14 @@ const TabSecurity = () => {
               L'authentification à deux facteurs n'est pas encore activée.
             </Typography>
             <Typography variant='body2'>
-            L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire à votre compte en exigeant plus que juste
-               un mot de passe pour se connecter. En savoir plus.
+              L'authentification à deux facteurs ajoute une couche de sécurité supplémentaire à votre compte en exigeant plus que juste
+              un mot de passe pour se connecter. En savoir plus.
             </Typography>
           </Box>
         </Box>
 
         <Box sx={{ mt: 11 }}>
-          <Button variant='contained' sx={{ marginRight: 3.5 }}>
+          <Button color='success' variant='contained' sx={{ marginRight: 3.5 }}>
             Sauvegarder les changements
           </Button>
           <Button

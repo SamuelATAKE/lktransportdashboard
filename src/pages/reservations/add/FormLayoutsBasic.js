@@ -37,8 +37,12 @@ const FormLayoutsBasic = () => {
   const [values, setValues] = useState({
     depart: '',
     destination: '',
-    prix: ''
-  })
+    prix: '',
+    dateVoyage: '',
+    nom: '',
+    telephone: '',
+    nombrePlace: ''
+  });
 
   const [tarif, setTarif] = useState(initialState);
 
@@ -103,18 +107,27 @@ const FormLayoutsBasic = () => {
 
   return (
     <Card>
-      <CardHeader title='Ajouter une commission' titleTypographyProps={{ variant: 'h6' }} />
+      <CardHeader color="success" title='Ajouter une réservation' titleTypographyProps={{ variant: 'h6' }} />
       <CardContent>
         <form onSubmit={() => onSubmit()}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
-              <TextField fullWidth label='Départ du colis' value={values.depart} onChange={handleChange('depart')} placeholder='Entrez le lieu de départ' />
+              <TextField fullWidth label='Lieu de Départ' value={values.depart} onChange={handleChange('depart')} placeholder='Entrez le lieu de départ' />
             </Grid>
             <Grid item xs={12}>
-              <TextField fullWidth label='Destination du colis' value={values.destination} onChange={handleChange('destination')} placeholder='Entrez le lieu de destination' />
+              <TextField fullWidth label='Lieu de Destination' value={values.destination} onChange={handleChange('destination')} placeholder='Entrez le lieu de destination' />
             </Grid>
             <Grid item xs={12}>
-              <TextField fullWidth label='Prix commission' value={values.prix} onChange={handleChange('prix')} placeholder='Entrez le prix' />
+              <TextField fullWidth label='Nom' value={values.nom} onChange={handleChange('nom')} placeholder='Entrez le nom du passager' />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField type="tel" fullWidth label='Téléphone' value={values.telephone} onChange={handleChange('telephone')} placeholder='Entrez le numéro de téléphone' />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField type="number" fullWidth label='Nombre de places' value={values.nombrePlace} onChange={handleChange('nombrePlace')} placeholder='Entrez le nombre de places' />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField type="date" fullWidth label='Date de voyage' value={values.dateVoyage} onChange={handleChange('dateVoyage')} placeholder='Entrez la date de voyage' />
             </Grid>
             <Grid item xs={12}>
               <Box
@@ -126,7 +139,7 @@ const FormLayoutsBasic = () => {
                   justifyContent: 'space-between'
                 }}
               >
-                <Button type='submit' variant='contained' size='large'>
+                <Button color="success" type='submit' variant='contained' size='large'>
                   Ajouter
                 </Button>
               </Box>

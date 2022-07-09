@@ -9,14 +9,14 @@ const Administrateurs = () => {
 return (
     <Grid container spacing={6}>
       <Grid item xs={12}>
-        <Typography variant='h5'>
+        <Typography color="success" variant='h5'>
           <Link href='#'>Administrateurs</Link>
         </Typography>
         <Typography variant='body2'>Liste des administrateurs de la plateforme</Typography>
       </Grid>
       <Grid item xs={12}>
         <Card>
-            <Button onClick={() => router.push('/administrateurs/add')} size='small' variant='contained'>
+            <Button color="success" onClick={() => router.push('/administrateurs/add')} size='small' variant='contained'>
               <CardHeader title='Ajouter un administrateur' titleTypographyProps={{ variant: 'h3', color: 'white' }} />
             </Button>
           <TableCustomized />

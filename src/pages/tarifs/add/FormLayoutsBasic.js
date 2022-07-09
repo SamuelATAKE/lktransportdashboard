@@ -129,7 +129,7 @@ const FormLayoutsBasic = () => {
                   justifyContent: 'space-between'
                 }}
               >
-                <Button type='submit' variant='contained' size='large'>
+                <Button color="success" type='submit' variant='contained' size='large'>
                   Ajouter
                 </Button>
               </Box>

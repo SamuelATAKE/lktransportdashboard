@@ -67,8 +67,8 @@ const TabAccount = () => {
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <ImgStyled src={imgSrc} alt='Profile Pic' />
               <Box>
-                <ButtonStyled component='label' variant='contained' htmlFor='account-settings-upload-image'>
-                  Téléverser une nouvel photo de profil
+                <ButtonStyled color='success' component='label' variant='contained' htmlFor='account-settings-upload-image'>
+                  Téléverser une nouvelle photo de profil
                   <input
                     hidden
                     type='file'
@@ -144,7 +144,7 @@ const TabAccount = () => {
           ) : null}
 
           <Grid item xs={12}>
-            <Button variant='contained' sx={{ marginRight: 3.5 }}>
+            <Button variant='contained' color='success' sx={{ marginRight: 3.5 }}>
               Sauvegarder
             </Button>
             <Button type='reset' variant='outlined' color='secondary'>
