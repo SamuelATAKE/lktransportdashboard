@@ -75,7 +75,7 @@ const LoginPage = () => {
 
   const [admin, setAdmin] = useState(initialState);
   const [admins, setAdmins] = useState([]);
-  
+
 
   // ** Hook
   const theme = useTheme()
@@ -245,6 +245,7 @@ const LoginPage = () => {
             <Button
               fullWidth
               size='large'
+              color="success"
               variant='contained'
               sx={{ marginBottom: 7 }}
               onClick={() => onSubmit()}
